@@ -1,0 +1,247 @@
+global proc shelf_Custom_Controls () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "circle" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Circle" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "circle.png" 
+        -image1 "circle.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "circle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateNURBSCircleOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Square" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Square" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Cntl Square.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Cntl Square.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "nurbsSquare -c 0 0 0 -nr 0 1 0 -sl1 1 -sl2 1 -sps 1 -d 3 -ch 1 ; objectMoveCommand;\nselect -r topnurbsSquare1 ;\nselect -r topnurbsSquare1 leftnurbsSquare1 bottomnurbsSquare1 rightnurbsSquare1 ;\nparent -w;\n// Result: topnurbsSquare1 leftnurbsSquare1 bottomnurbsSquare1 rightnurbsSquare1 // \nselect -r topnurbsSquare1 ;\nselect -r topnurbsSquare1 leftnurbsSquare1 bottomnurbsSquare1 rightnurbsSquare1 ;\nrename \"rightnurbsSquare1\" \"____1\";\n// Result: ____1 // \nselect -r ____1 ;\nselect -r leftnurbsSquare1 ;\nrename \"leftnurbsSquare1\" \"____1\";\n// Result: ____2 // \nselect -r bottomnurbsSquare1 ;\nrename \"bottomnurbsSquare1\" \"____1\";\n// Result: ____3 // \nselect -r topnurbsSquare1 ;\nrename \"topnurbsSquare1\" \"____1\";\n// Result: ____4 // \nselect -r ____2 ;\nselect -r nurbsSquare1 ;\nselect -r ____4 ;\npickWalk -d down;\n// Result: ____Shape4 // \nselect -cl  ;\nselect -r ____1 ____4 ;\nselect -r ____4 ;\npickWalk -d down;\n// Result: ____Shape4 // \nselect -tgl ____2 ;\nparent -r -s;\n// Result: ____Shape4 // \nselect -r ____1 ;\npickWalk -d down;\n// Result: ____Shape1 // \nselect -tgl ____2 ;\nparent -r -s;\n// Result: ____Shape1 // \nselect -r ____3 ;\npickWalk -d down;\n// Result: ____Shape3 // \nselect -r ____2 ;\nselect -r ____3 ;\npickWalk -d down;\n// Result: ____Shape3 // \nselect -tgl ____2 ;\nparent -r -s;\n// Result: ____Shape3 // \ndelete ____3 ____1 ____4 nurbsSquare1 ;\nselect -r ____2 ;\nrename \"____2\" \"NurbSquare1\";\n// Result: NurbSquare1 // \n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Soft square" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Softsquare" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Soft square.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Soft square.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "\ncircle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand;\nselect -r nurbsCircle1.cv[0:1] ;\nscale -ws -r -p 0.391806cm 0cm -0.945903cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[6:7] ;\nscale -ws -r -p 0.945903cm 0cm 0.391806cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[4:5] ;\nscale -ws -r -p -0.391806cm 0cm 0.945903cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[2:3] ;\nscale -ws -r -p -0.945903cm 0cm -0.391806cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[0:1] ;\nscale -ws -r -p 0.391806cm 0cm -0.945903cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[6:7] ;\nscale -ws -r -p 0.945903cm 0cm 0.391806cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[4:5] ;\nscale -ws -r -p -0.391806cm 0cm 0.945903cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[2:3] ;\nscale -ws -r -p -0.945903cm 0cm -0.391806cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[0:3] ;\nscale -ws -r -p -0.277047cm 0cm -0.668853cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[4:7] ;\nscale -ws -r -p 0.277047cm 0cm 0.668853cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[0:1] nurbsCircle1.cv[6:7] ;\nscale -ws -r -p 0.668853cm 0cm -2.77047e-06cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[2:5] ;\nscale -ws -r -p -0.668853cm 0cm 2.77047e-06cm 1e-05 1 1 ;\nselect -cl  ;\nselect -r nurbsCircle1 ;\nrename \"nurbsCircle1\" \"nurbsSoftsquare1\";\n// Result: nurbsSoftsquare1 // " 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Triangle" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Triangle" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Triangle.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Triangle.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "circle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand;\nselect -r nurbsCircle1.cv[0:2] ;\nscale -ws -r -p 0cm 0cm -0.945903cm 1e-05 1 1 ;\nscale -ws -r -p 0cm 0cm -0.945903cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[3:7] ;\nscale -ws -r -p 0cm 0cm 0.554097cm 1 1 1e-05 ;\nselect -r nurbsCircle1.cv[6:7] ;\nscale -ws -r -p 0.945903cm 0cm 0.554095cm 1e-05 1 1 ;\nselect -r nurbsCircle1.cv[3:4] ;\nscale -ws -r -p -0.945903cm 0cm 0.554095cm 1e-05 1 1 ;\nselect -cl  ;\nselect -r nurbsCircle1 ;\nselect -r nurbsCircle1 ;\nrename \"nurbsCircle1\" \"nurbsTriangle1\";\n// Result: nurbsTriangle1 // \n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Cube" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Cube" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Cube.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Cube.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "nurbsSquare -c 0 0 0 -nr 0 1 0 -sl1 1 -sl2 1 -sps 1 -d 3 -ch 1 ; objectMoveCommand;\nselect -r topnurbsSquare1 ;\npickWalk -d down;\n// Result: topnurbsSquareShape1 // \nselect -tgl rightnurbsSquare1 ;\nparent -r -s;\n// Result: topnurbsSquareShape1 // \nselect -r leftnurbsSquare1 ;\npickWalk -d down;\n// Result: leftnurbsSquareShape1 // \nselect -tgl rightnurbsSquare1 ;\nparent -r -s;\n// Result: leftnurbsSquareShape1 // \nselect -r bottomnurbsSquare1 ;\npickWalk -d down;\n// Result: bottomnurbsSquareShape1 // \nselect -tgl rightnurbsSquare1 ;\nparent -r -s;\n// Result: bottomnurbsSquareShape1 // \nreorder -relative -2 rightnurbsSquare1 ;\nselect -r nurbsSquare1 ;\nselect -r rightnurbsSquare1 ;\nrename \"rightnurbsSquare1\" \"nurbsSquareCntl1\";\n// Result: nurbsSquare1 //;\n// Result: |nurbsSquare1|nurbsSquare1 // \nparent -w;\n// Result: nurbsSquare2 // \nselect -r nurbsSquare1 ;\ndelete nurbsSquare1 ;\nselect -r nurbsSquareCntl1 ;\nrename \"nurbsSquareCntl1\" \"_1\";\n// Result: _1 // \nduplicate -rr;\n// Result: _2 //\nduplicate -rr;\n// Result: _3 //\nduplicate -rr;\n// Result: _4 //\nselect -r _4 ;\nsetAttr \"_4.rotateX\" 90;\nsetAttr \"_4.translateZ\" 0.5;\nsetAttr \"_4.translateY\" 0.5;\nselect -r _1 ;\nsetAttr \"_1.rotateX\" 90;\nsetAttr \"_1.translateY\" 0.5;\nsetAttr \"_1.translateZ\" -0.5;\nselect -r _3 ;\nsetAttr \"_3.translateY\" 1;\nselect -r _2 _3 _1 _4 ;\nmakeIdentity -apply true -t 1 -r 1 -s 1 -n 0 -pn 1;\nselect -r _1 ;\npickWalk -d down;\n// Result: _Shape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: _Shape1 // \nselect -r _1 ;\npickWalk -d down;\n// Result: _1|topnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: topnurbsSquareShape2 // \nselect -r _1 ;\npickWalk -d down;\n// Result: _1|leftnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: leftnurbsSquareShape2 // \nselect -r _3 ;\nselect -r _3 ;\nselect -cl  ;\nselect -r _3 ;\nselect -cl  ;\nselect -r _3 ;\nselect -cl  ;\nselect -r _2 ;\npickWalk -d down;\n// Result: _Shape2 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: _Shape2 // \nselect -r _2 ;\npickWalk -d down;\n// Result: _2|topnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: topnurbsSquareShape3 // \nselect -cl  ;\nselect -r _2 ;\npickWalk -d down;\n// Result: _2|leftnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: leftnurbsSquareShape3 // \nselect -r _4 ;\npickWalk -d down;\n// Result: _Shape4 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: _Shape4 // \nselect -r _4 ;\npickWalk -d down;\n// Result: _4|topnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: topnurbsSquareShape4 // \nselect -r _4 ;\npickWalk -d down;\n// Result: _4|leftnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: leftnurbsSquareShape4 // \nselect -r _4 ;\npickWalk -d down;\n// Result: _4|bottomnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: bottomnurbsSquareShape2 // \nselect -r _2 ;\npickWalk -d down;\n// Result: _2|bottomnurbsSquareShape1 // \npickWalk -d down;\n// Result: _2|bottomnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: bottomnurbsSquareShape3 // \nselect -r _3 ;\nmove -r 0 0.671949 0 ;\nmove -r 0 0.508471 0 ;\n// Undo: move -r 0 0.508471 0  // \n// Undo: move -r 0 0.671949 0  // \nselect -r _3 ;\nselect -cl  ;\nselect -r _1 ;\npickWalk -d down;\n// Result: _1|bottomnurbsSquareShape1 // \nselect -tgl _3 ;\nparent -r -s;\n// Result: bottomnurbsSquareShape4 // \nselect -r _3 ;\nmove -r 0 0.662182 0 ;\n// Undo: move -r 0 0.662182 0  // \nmove -r 0 -0.49529 0 _3.scalePivot _3.rotatePivot ;\nselect -r _2 ;\nselect -add _1 ;\nselect -add _4 ;\nselect -r _3 ;\nselect -r _3 ;\nsetAttr \"_3.translateY\" 0;\nrename \"_3\" \"NurbCube1\";\n// Result: NurbCube1 // \ndelete _4 ;\ndelete _2 ;\ndelete _1 ;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Sphere" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Sphere" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Sphere.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Sphere.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "circle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand;\ncircle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand;\ncircle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.01 -s 8 -ch 1; objectMoveCommand;\nselect -r nurbsCircle1 ;\nrename \"nurbsCircle1\" \"__1\";\n// Result: __1 // \nselect -r __1 ;\nselect -r nurbsCircle2 ;\nrename \"nurbsCircle2\" \"__2\";\n// Result: __2 // \nselect -r nurbsCircle3 ;\nrename \"nurbsCircle3\" \"__3\";\n// Result: __3 // \nselect -r __2 ;\nsetAttr \"__2.rotateX\" 90;\nsetAttr \"__2.rotateY\" 90;\nselect -r __3 ;\nsetAttr \"__3.rotateX\" 90;\nselect -r __3 __2 __1 ;\nmakeIdentity -apply true -t 1 -r 1 -s 1 -n 0 -pn 1;\nselect -r __3 ;\npickWalk -d down;\n// Result: __Shape3 // \nselect -tgl __2 ;\nparent -r -s;\n// Result: __Shape3 // \nselect -r __1 ;\npickWalk -d down;\n// Result: __Shape1 // \nselect -tgl __2 ;\nparent -r -s;\n// Result: __Shape1 // \nselect -r __2 ;\nselect -r -ne defaultLightSet ;\ndelete __3 ;\ndelete __1 ;\nrename \"__2\" \"NurbSphere1\";\n// Result: NurbSphere1 // \n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Arrow" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Arrow" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Arrow.png" 
+        -image1 "C:/Users/perry/OneDrive/Documents/maya/2022/prefs/icons/Arrow.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "curve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\ncurve -d 3 -p -0.973642 0 0.00640921 -p -0.304906 0 0.00640921 -p 0.363829 0 0.00640921 -p 1.032564 0 0.00640921 -k 0 -k 0 -k 0 -k 1 -k 1 -k 1 ;\nselect -r curve1 ;\nrename \"curve1\" \"___0\";\n// Result: ___0 // \nselect -r ___0 ;\nselect -r curve2 ;\nrename \"curve2\" \"___0\";\n// Result: ___1 // \nselect -r curve3 ;\nrename \"curve3\" \"___0\";\n// Result: ___2 // \nselect -r curve4 ;\nrename \"curve4\" \"___0\";\n// Result: ___3 // \nselect -r curve5 ;\nrename \"curve5\" \"___0\";\n// Result: ___4 // \nselect -r curve6 ;\nrename \"curve6\" \"___0\";\n// Result: ___5 // \nselect -r curve7 ;\nrename \"curve7\" \"___0\";\n// Result: ___6 // \nselect -r ___4 ;\nselect -r ___3 ;\nsetAttr \"___3.rotateY\" 90;\nmove -r -os -wd 0 0 -0.961865 ;\nmove -r -os -wd 0.961865 0 0 ;\nselect -r ___4 ;\nsetAttr \"___4.rotateY\" 90;\nmove -r -os -wd 0.985911 0 0 ;\nmove -r -os -wd 0 0 1.009958 ;\nmove -r -os -wd -0.018552 0 0 ;\nmove -r -os -wd 0 0 0.00742081 ;\nmove -r -os -wd 0 0 0.00921766 ;\nselect -r ___3 ;\nmove -r -os -wd 0 0 -0.0184353 ;\nmove -r -os -wd 0.00460883 0 0 ;\nselect -cl  ;\nselect -r ___0 ;\nmove -r -os -wd 0 0 -1.999485 ;\nselect -r ___0.cv[0] ;\nmove -r -os -wd 0.980879 0 0 ;\nselect -r ___0.cv[1] ;\nmove -r -os -wd 0.49044 0 0 ;\nselect -tgl ___0.cv[2] ;\nmove -r -os -wd 0.238932 0 0 ;\nselect -cl  ;\nselect -r ___0 ;\nmove -r -os -wd -1.999485 0 0 ;\nselect -cl  ;\nselect -r ___1 ;\nmove -r -os -wd 0 0 -2.087512 ;\nselect -r ___1.cv[0:1] ;\nmove -r -os -wd 0.452713 0 0 ;\nselect -r ___1.cv[0] ;\nmove -r -os -wd 0.414987 0 0 ;\nselect -cl  ;\nselect -r ___1 ;\nmove -r -os -wd 1.119208 0 0 ;\nmove -r -os -wd 0 0 0.0880276 ;\nmove -r -os -wd 0.0173548 0 0 ;\nmove -r -os -wd 0 0 -0.00578493 ;\nselect -r ___1.cv[3] ;\nmove -r -os -wd -0.170655 0 0 ;\nselect -cl  ;\nselect -r ___5 ;\nmove -r -os -wd 0 0 -2.680434 ;\nsetAttr \"___5.rotateY\" 45;\nmove -r -os -wd 0 0 -0.712438 ;\n// Undo: move -r -os -wd 0 0 -0.712438  // \nmove -r -1.321207 0 0 ;\nselect -r ___2 ;\nsetAttr \"___2.rotateY\" 45;\nsetAttr \"___2.rotateY\" -45;\nmove -r 0 0 -2.737464 ;\nselect -r ___4 ___1 ;\nmove -r -0.0190102 0 0 ;\n// Undo: move -r -0.0190102 0 0  // \nselect -r ___4 ___1 ___3 ___0 ___2 ___6 ___5 ;\nmove -r -0.0190102 0 0 ;\nselect -r ___4 ___1 ;\nmove -r -0.0136757 0 0 ;\nselect -cl  ;\nselect -r ___0 ;\nmove -r 0 0 -0.00844069 ;\nselect -cl  ;\n// Undo: select -cl   // \nmove -r -0.00562713 0 0 ;\nselect -r ___5 ;\nmove -r 0 0 -0.0140678 ;\nmove -r 0.00743628 0 0 ;\nselect -cl  ;\nselect -r ___1 ;\nselect -r ___1 ;\nmove -r 0.00187948 0 0 ;\nmove -r 0 0 -0.00125299 ;\nselect -cl  ;\nselect -r ___2 ;\nmove -r 1.254221 0 0 ;\nmove -r 0.0106516 0 0 ;\nmove -r 0 0 0.00443786 ;\nmove -r -0.00443786 0 0 ;\nselect -r ___2.cv[0] ;\nmove -r -0.556308 0 -0.593752 ;\nselect -cl  ;\nselect -r ___5 ;\nselect -r ___5.cv[3] ;\nmove -r 0.583053 0 -0.593752 ;\nmove -r 0.0146589 0 0.013926 ;\nselect -cl  ;\nselect -r ___2 ;\nselect -r ___2.cv[0] ;\nmove -r 0.00635219 0 0 ;\nmove -r 0.00146589 0 0 ;\nmove -r 0 0 0.0100169 ;\nselect -cl  ;\nselect -r ___2 ;\nselect -r ___2.cv[0] ;\nmove -r 5.96576e-05 0 0.000616462 ;\nselect -r ___5 ;\nselect -r ___5.cv[3] ;\nmove -r 0.000377831 0 -7.95434e-05 ;\nselect -cl  ;\nselect -r ___2 ;\nselect -r ___2.cv[0] ;\nmove -r 0 0 5.96576e-05 ;\nselect -cl  ;\nselect -r ___4 ___1 ___3 ___0 ___2 ___6 ___5 ;\nmakeIdentity -apply true -t 1 -r 1 -s 1 -n 0 -pn 1;\nselect -cl  ;\nselect -r ___1 ;\nselect -r ___4 ;\nselect -r ___1 ;\npickWalk -d down;\n// Result: ___Shape1 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape1 // \nselect -r ___6 ;\npickWalk -d down;\n// Result: ___Shape6 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape6 // \nselect -r ___3 ;\npickWalk -d down;\n// Result: ___Shape3 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape3 // \nselect -r ___0 ;\npickWalk -d down;\n// Result: ___Shape0 // \nselect -r ___4 ;\nselect -r ___0 ;\npickWalk -d down;\n// Result: ___Shape0 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape0 // \nselect -r ___5 ;\npickWalk -d down;\n// Result: ___Shape5 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape5 // \nselect -r ___2 ;\npickWalk -d down;\n// Result: ___Shape2 // \nselect -tgl ___4 ;\nparent -r -s;\n// Result: ___Shape2 // \ndelete  ___0 ___1 ___2 ___3 ___5 ___6 ;\nselect -r ___4 ;\nselect -r ___Shape5.cv[0:2] ;\nselect -tgl ___Shape5.cv[3] ;\nmove -r 0 0 0.500244 ;\nmove -r 0.500244 0 0 ;\nmove -r 0.00416956 0 0 ;\nselect -cl  ;\nmove -r -0.963605 0 0 ___4.scalePivot ___4.rotatePivot ;\nmove -r 0 0 -1.052553 ___4.scalePivot ___4.rotatePivot ;\nselect -r ___4 ;\nrename \"___4\" \"NurbArrow1\";\n// Result: NurbArrow1 //\n" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 
